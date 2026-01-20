@@ -5,7 +5,7 @@ class Thermostat:
         self.__max_temp = 30    # In Celsius
 
     def set_temperature(self, temp_celsius):
-        if self.__min_temp <= temp_celsius <= self.__max_temp:
+        if self.__is_valid_temp:
             self.__temperature = temp_celsius
         else:
             print("ERROR: Can only set temperature between 10°C and 30°C")
@@ -28,17 +28,21 @@ class Thermostat:
         fahrenheit = (celsius * 9 / 5) + 32
         return fahrenheit
 
-
+    def __is_valid_temp(self, temp):
+        if self.__min_temp <= temp <= self.__max_temp:
+            return True
+        else:
+            return False
 
 thermostat = Thermostat()
 print(thermostat.get_temperature_celsius())  # 20
 print(thermostat.get_temperature_fahrenheit())  # 68
 
-thermostat.set_temperature(25)
-print(thermostat.get_temperature_fahrenheit())  # 77
+print(thermostat.set_temperature(19))
+# print(thermostat.get_temperature_fahrenheit())  # 77
 
-thermostat.set_temperature(50)  # Error: out of range
-print(thermostat.get_temperature_celsius())  # Still 25
+# thermostat.set_temperature(50)  # Error: out of range
+# print(thermostat.get_temperature_celsius())  # Still 25
 
 # thermostat.increase_temp()
 # print(thermostat.get_temperature_celsius())  # 26
