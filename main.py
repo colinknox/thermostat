@@ -5,7 +5,7 @@ class Thermostat:
         self.__max_temp = 30    # In Celsius
 
     def set_temperature(self, temp_celsius):
-        if self.__is_valid_temp:
+        if self.__is_valid_temp(temp_celsius):
             self.__temperature = temp_celsius
         else:
             print("ERROR: Can only set temperature between 10°C and 30°C")
